@@ -1,0 +1,131 @@
+@use '../abstracts' as *;
+
+.section {
+  padding-block: $section-padding;
+}
+
+@each $side in $spacing-sides {
+  @each $size, $value in $spacing-values {
+    @if ($side == 'all') and ($size != 'auto') {
+      .m-#{$size} {
+        margin: $value;
+      }
+
+      .p-#{$size} {
+        padding: $value;
+      }
+    }
+
+    @if ($size != 'auto') {
+      @if ($side == 'top') {
+        .pt-#{$size} {
+          padding-block-start: $value;
+        }
+      }
+
+      @if ($side == 'right') {
+        .pr-#{$size} {
+          padding-inline-end: $value;
+        }
+      }
+
+      @if ($side == 'bottom') {
+        .pb-#{$size} {
+          padding-block-end: $value;
+        }
+      }
+
+      @if ($side == 'left') {
+        .pl-#{$size} {
+          padding-inline-start: $value;
+        }
+      }
+
+      @if ($side == 'inline') {
+        .px-#{$size} {
+          padding: $value;
+        }
+      }
+
+      @if ($side == 'block') {
+        .py-#{$size} {
+          padding-block: $value;
+        }
+      }
+    }
+
+    @if ($side == 'top') {
+      @if ($size != 'auto') {
+        .mt-#{$size} {
+          margin-block-start: $value;
+        }
+      }
+    }
+
+    @if ($side == 'right') {
+      .mr-#{$size} {
+        margin-inline-start: $value;
+      }
+    }
+
+    @if ($side == 'bottom') {
+      @if ($size != 'auto') {
+        .mb-#{$size} {
+          margin-block-end: $value;
+        }
+      }
+    }
+
+    @if ($side == 'left') {
+      .ml-#{$size} {
+        margin-inline-start: $value;
+      }
+    }
+
+    @if ($side == 'inline') {
+      .mx-#{$size} {
+        margin-inline: $value;
+      }
+    }
+
+    @if ($side == 'block') {
+      @if ($size != 'auto') {
+        .my-#{$size} {
+          margin-block: $value;
+        }
+      }
+    }
+  }
+}
+
+// can use in personal projects, other method is bootstrap like
+
+// // move out to seperate _specing.scss file in utilities folder
+// @each $side in $spacing-sides {
+//   @each $size, $value in $spacing-values {
+//     @if ($side != 'all') {
+//       @if ($size == 'auto' and $side != 'top') and
+//         ($size == 'auto' and $side != 'bottom') and
+//         ($size == 'auto' and $side != 'block')
+//       {
+//         .margin-#{$side}-#{$size} {
+//           margin-#{$side}: $value;
+//         }
+//       }
+
+//       @if ($size != 'auto') {
+//         .padding-#{$side}-#{$size} {
+//           padding-#{$side}: $value;
+//         }
+//       }
+//     }
+//     @if ($side == 'all') and ($size != 'auto') {
+//       .margin-#{$size} {
+//         margin: $value;
+//       }
+//       .padding-#{$size} {
+//         padding: $value;
+//       }
+//     }
+//   }
+// }

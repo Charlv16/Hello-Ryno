@@ -1,0 +1,50 @@
+@use '../abstracts/' as *;
+
+// ******************* FONT FAMILIES  *******************
+.ff-base {
+  font-family: $ff-base;
+}
+
+.ff-accent {
+  font-family: $ff-accent;
+}
+
+// ******************* FONT SIZES  *******************
+@each $size-name, $size-value in $font-sizes {
+  .fs-#{$size-name} {
+    font-size: $size-value;
+
+    @if $size-name > 600 {
+      line-height: 1.1;
+    }
+  }
+}
+
+// ******************* FONT WEIGHTS  *******************
+// could be looping through a map to create a wide variety of sizes, project specific
+@each $size-name, $size-value in $font-weights {
+  .fw-#{$size-name} {
+    font-weight: $size-value;
+  }
+}
+
+// ******************* GENERAL FONT UTILITIES  *******************
+.text-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+//is used as a leading title to a piece of text content
+.lead {
+  font-size: fs(500);
+  color: clr(neutral, 900);
+  text-transform: uppercase;
+  font-weight: $fw-700;
+
+  & + p {
+    margin-top: 0;
+  }
+}

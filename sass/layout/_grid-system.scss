@@ -1,0 +1,19 @@
+@use '../abstracts/' as *;
+
+.d-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat($total-columns, minmax(0, 1fr));
+
+  & [class*='col-'] {
+    grid-column: span $total-columns;
+  }
+
+  @include column-system('grid');
+}
+
+@for $column-count from 1 through $total-columns {
+  .grid-col-#{$column-count} {
+    grid-template-columns: repeat(#{column-count}, 1fr);
+  }
+}

@@ -1,0 +1,6 @@
+@use '../abstracts/' as *;
+
+// leaving as an example, will remove if not used in project
+.shift-up {
+  transform: translateY(calc($section-padding * -1.5));
+}

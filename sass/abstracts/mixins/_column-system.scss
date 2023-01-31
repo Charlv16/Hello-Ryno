@@ -1,0 +1,86 @@
+@use 'media-queries' as *;
+@use '../breakpoints' as *;
+
+@mixin column-system(
+  $container-type,
+  $parent-selector: '&',
+  $total-columns: 12
+) {
+  $total-columns: $total-columns;
+  @if ($container-type == 'flex') {
+    @for $column-count from 1 through $total-columns {
+      //parent-selector
+      $parent: $parent-selector;
+      #{$parent} .col-#{$column-count} {
+        flex: 0 0 calc(100% / $total-columns) * $column-count;
+      }
+
+      // small screens and up
+      @include mq-min('small') {
+        #{$parent} .col-sm-#{$column-count} {
+          flex: 0 0 calc(100% / $total-columns) * $column-count;
+        }
+      }
+
+      // small screens and up
+      @include mq-min('medium') {
+        #{$parent} .col-md-#{$column-count} {
+          flex: 0 0 calc(100% / $total-columns) * $column-count;
+        }
+      }
+
+      // small screens and up
+      @include mq-min('large') {
+        #{$parent} .col-lg-#{$column-count} {
+          flex: 0 0 calc(100% / $total-columns) * $column-count;
+        }
+      }
+
+      // small screens and up
+      @include mq-min('extra-large') {
+        #{$parent} .col-xl-#{$column-count} {
+          flex: 0 0 calc(100% / $total-columns) * $column-count;
+        }
+      }
+    }
+  }
+
+  @if ($container-type == 'grid') {
+    @for $column-count from 1 through $total-columns {
+      //parent-selector
+      $parent: $parent-selector;
+      // always a column
+      #{$parent} .col-#{$column-count} {
+        grid-column: span $column-count;
+      }
+
+      // small screens and up
+      @include mq-min('small') {
+        #{$parent} .col-sm-#{$column-count} {
+          grid-column: span $column-count;
+        }
+      }
+
+      // medium screens and up
+      @include mq-min('medium') {
+        #{$parent} .col-md-#{$column-count} {
+          grid-column: span $column-count;
+        }
+      }
+
+      // large screens and up
+      @include mq-min('large') {
+        #{$parent} .col-lg-#{$column-count} {
+          grid-column: span $column-count;
+        }
+      }
+
+      // extra-large screens and up
+      @include mq-min('extra-large') {
+        #{$parent} .col-xl-#{$column-count} {
+          grid-column: span $column-count;
+        }
+      }
+    }
+  }
+}

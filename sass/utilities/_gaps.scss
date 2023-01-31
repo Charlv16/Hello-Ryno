@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+@each $size-name, $size-value in $gap-size {
+  .flex-row,
+  .flex-column,
+  .d-grid {
+    &.gap-#{$size-name} {
+      gap: $size-value;
+    }
+  }
+
+  .d-grid {
+    &.row-gap-#{$size-name} {
+      row-gap: $size-value;
+    }
+
+    &.column-gap-#{$size-name} {
+      column-gap: $size-value;
+    }
+  }
+}

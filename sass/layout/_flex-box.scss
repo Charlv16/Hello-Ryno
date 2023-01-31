@@ -1,0 +1,60 @@
+@use '../abstracts/' as *;
+
+%centerAligned {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+
+  & [class*='col-'] {
+    flex-basis: auto;
+  }
+
+  &.h-center {
+    align-items: center;
+  }
+
+  &.v-center {
+    justify-content: center;
+  }
+
+  &.center {
+    @extend %centerAligned;
+  }
+
+  @include column-system('flex');
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  & [class*='col'] {
+    flex-basis: auto;
+  }
+
+  &.v-center {
+    align-items: center;
+  }
+
+  &.h-center {
+    justify-content: center;
+  }
+
+  &.center {
+    @extend %centerAligned;
+  }
+
+  // @include column-system('flex');
+}
+
+@for $column-count from 1 through $total-columns {
+  .flex-row-#{$column-count} {
+    > [class*='col'] {
+      flex: 0 0 calc(100% / $column-count);
+    }
+  }
+}
